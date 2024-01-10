@@ -1,1 +1,27 @@
 # prediccion_de_churn_en_beta_bank
+
+# Introducción
+En el entorno altamente competitivo de la industria bancaria, retener a los clientes existentes es crucial para el éxito financiero. En este proyecto, nos enfrentamos al desafío de Beta Bank, donde los clientes están abandonando la institución gradualmente cada mes. La investigación reveló que resulta más rentable retener a los clientes actuales que atraer nuevos.
+
+Nuestra tarea es desarrollar un modelo predictivo que pueda prever si un cliente está a punto de abandonar el banco. Contamos con datos históricos que detallan el comportamiento de los clientes y la terminación de contratos con el banco. El objetivo es alcanzar un valor F1 mínimo de 0.59 en la evaluación del conjunto de prueba, una métrica que combina precisión y exhaustividad.
+
+# Observaciones de la preparacion de los datos
+En esta sección del proyecto, se realizaron acciones clave para preparar los datos antes de desarrollar el modelo predictivo. La carga inicial del conjunto de datos 'Churn.csv' se llevó a cabo para acceder a la información histórica sobre el comportamiento de los clientes. El análisis de los tipos de datos aseguró la coherencia en la representación de las variables. La exploración de los primeros registros proporcionó una visión general de la estructura y características del DataFrame. Se identificaron valores faltantes en la columna 'Tenure', y para mantener la integridad de los datos, se optó por reemplazarlos con ceros. Estas acciones son esenciales para garantizar la calidad de los datos antes de abordar el desafío de predecir la retención de clientes en Beta Bank.
+
+# Observaciones del preprocesamiento de los datos
+El preprocesamiento de datos se llevó a cabo con el objetivo de optimizar el conjunto de datos para el desarrollo del modelo de predicción de Churn en Beta Bank. La conversión de variables categóricas a variables dummy facilita la inclusión de estas características en modelos de aprendizaje automático. La eliminación de la columna 'Surname' se realizó debido a su falta de relevancia para la predicción de Churn y para evitar posibles interferencias en el modelo. La separación de características y la variable objetivo, así como la división de datos en conjuntos de entrenamiento y prueba, son pasos esenciales para garantizar un análisis efectivo y una evaluación adecuada del modelo en datos no vistos. Estas acciones se llevaron a cabo con el propósito de mejorar la eficacia del modelo en la identificación de clientes propensos a abandonar el banco.
+
+# Observaciones del análisis del equilibrio de clases
+La impresión de las cuentas de valores para las clases 'No Churn' (Clase 0) y 'Churn' (Clase 1) reveló un desequilibrio significativo, con 6,390 instancias de clientes que no abandonaron el banco y 1,610 instancias de clientes que sí lo hicieron. Este desequilibrio puede afectar negativamente el rendimiento del modelo, ya que puede tender a favorecer la clase mayoritaria.
+
+# Observaciones del tratamiento del desequilibrio de clases
+En la sección dedicada al tratamiento del desequilibrio de clases, se implementaron acciones específicas para abordar la disparidad en el número de instancias entre las clases 'Churn' y 'No Churn'. Se optó por realizar un sobremuestreo de la clase minoritaria ('Churn = 1') mediante la función resample de scikit-learn, generando instancias adicionales para equilibrar la proporción de clases. Posteriormente, se concatenaron los datos originales con los datos sobremuestreados para crear un conjunto de entrenamiento balanceado. Estas acciones fueron fundamentales para mejorar la capacidad del modelo RandomForest en la predicción del Churn al permitirle aprender de manera más equitativa de ambas clases.
+
+# Observaciones del entrenamiento del modelo
+En la etapa de entrenamiento del modelo, se configuraron parámetros específicos para el RandomForestClassifier, como el número de estimadores y la profundidad máxima del árbol, con el objetivo de optimizar el rendimiento y la generalización del modelo. Estos ajustes buscan equilibrar la complejidad del modelo para aprender patrones de manera efectiva sin sobreajustar los datos de entrenamiento. La elección de estos parámetros es crucial para obtener un modelo RandomForest eficaz en la predicción del abandono de clientes ('Churn').
+
+# Observaciones de la evaluación del modelo
+Durante la evaluación del modelo, se realizaron predicciones en el conjunto de prueba utilizando el modelo RandomForest entrenado previamente. Se calcularon métricas clave, como F1 Score y AUC-ROC Score, para evaluar la precisión y la capacidad del modelo para manejar desequilibrios en la clasificación. Estas métricas ofrecen una evaluación integral del rendimiento del modelo en la predicción de la retención de clientes.
+
+# Conclusión
+El proyecto culminó exitosamente con el desarrollo de un modelo predictivo centrado en la retención de clientes para Beta Bank. Se implementaron estrategias fundamentales, desde el preprocesamiento de datos hasta la gestión del desequilibrio de clases. El rendimiento destacado del modelo RandomForest, con un F1 Score sólido de 0.6352 en la evaluación del conjunto de prueba, superó las expectativas establecidas. Se aconseja una exploración continua para ajustar parámetros y mantener la capacidad de adaptación en un entorno dinámico. Este modelo representa una herramienta efectiva para Beta Bank al prever y gestionar proactivamente el Churn de los clientes.
